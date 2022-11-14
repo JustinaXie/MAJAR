@@ -1,0 +1,7 @@
+importFrom(Rcpp, evalCpp)
+exportPattern("^[[:alpha:]]+")
+importFrom("stats", "nlminb", "pnorm", "rbinom", "rnorm")
+importFrom("MASS", "mvrnorm")
+importFrom("parallel", "mclapply")
+export(generate_data_DGP)
+export(MAJAR)

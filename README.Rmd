@@ -1,0 +1,108 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# MAJAR
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+We propose MAJAR (Meta-Analysis of Joint effect Associations for biomarker Replicability assessment) to jointly test prognostic and predictive effects in meta-analysis without the need of using an independent cohort for replication of the detected biomarkers. MAJAR builds upon a two-dimensional hierarchical mixture model and adopts an efficiently-implemented Expectation-Maximization (EM) algorithm for parameter estimation. It provides posterior probabilities of replicability (PPRs) and Bayesian false discovery rates (Fdr) for all biomarkers tested.
+
+## Installation
+
+To install the software for *MAJAR*, you need package *devtools* first
+
+```{R}
+if (!requireNamespace("devtools", quietly = TRUE))
+    install.packages("devtools")
+library(devtools)
+```
+
+Then, you can install *MAJAR* 
+```{R}
+#install_github("JustinaXie/MAJAR")
+Rcpp::sourceCpp("src/file.cpp")
+source("R/MAJAR.R")
+source("R/Simulation.R")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example,message=FALSE,warning=FALSE}
+#library(MAJAR)
+```
+
+
+1. An example of simulation under MAJAR's data generation process. 
+```{r settings}
+M_real = 1000
+K_real = 5
+p_real =0.1
+h2_real = 0.1
+rho_real = 0.5
+alpha_real = 2
+data_real = "random" 
+DGP = "MAJAR"
+lambda_real = 0.1
+data_simu_mamba_PGx<-generate_data_DGP(M=M_real,K=K_real,
+                                       p=p_real,
+                                       data=data_real,
+                                       h2=h2_real,
+                                       alpha=alpha_real,
+                                       lambda = lambda_real,
+                                       rho=rho_real,
+                                       model = DGP)
+betajk_G<-data_simu_mamba_PGx$betajk_G
+betajk_GT<-data_simu_mamba_PGx$betajk_GT
+sjk2_G<-data_simu_mamba_PGx$sjk2_G
+sjk2_GT<-data_simu_mamba_PGx$sjk2_GT
+```
+
+2. Run MAJAR. 
+```{r MAJAR}
+MAJAR_results<-MAJAR(betajk_G, sjk2_G, 
+                                     betajk_GT, sjk2_GT,
+                                     p=0.1,#Rj~Bernoulli(pi)
+                                     lambda=0.1,#Ojk~Bernoulli(lambda)
+                                     tau2=0.001,
+                                     alpha=1,
+                                     rho=0,
+                                     parcores = 4,
+                                     minIter = 100,
+                                     maxIter=1e4,
+                                     tmp=10^6,
+                                     transform=TRUE,
+                                     fast_implement=TRUE)
+```
+
+3. Check the results of MAJAR
+```{r results}
+hist(MAJAR_results$ppr)
+```
+
+```{r estimation}
+print(paste0("The estimated replicable non-zero effect proportion:",round(MAJAR_results$p,3)))
+print(paste0("The estimated outlier proportion:",round(MAJAR_results$lambda,3)))
+print(paste0("The estimated inflation rate factor:",round(MAJAR_results$alpha,3)))
+print(paste0("The estimated heritability:",round(MAJAR_results$h2,3)))
+print(paste0("The estimated correlation between main and interaction effect:",round(MAJAR_results$rho,3)))
+```
+
+```{r time}
+MAJAR_results$Time
+```
+

@@ -1,0 +1,15 @@
+Package: MAJAR
+Type: Package
+Title: What the package does (short line)
+Version: 1.0
+Date: 2022-11-14
+Author: Yuhan Xie
+Maintainer: Yuhan Xie <yuhan.xie@yale.edu>
+Description: MAJAR: Meta-Analysis of Joint effect Associations for biomarker Replicability assessment
+License: MIT + file LICENSE
+Imports: Rcpp (>= 1.0.9)
+Depends: TMB, RcppEigen,parallel
+LinkingTo: Rcpp, RcppArmadillo, TMB, RcppEigen, parallel
+NeedsCompilation: yes
+Encoding: UTF-8
+RoxygenNote: 7.2.1
