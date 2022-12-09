@@ -6,8 +6,7 @@ require(parallel)
 require(TMB)
 require(optimParallel)
 # Rcpp::sourceCpp("src/file.cpp")
-# TMB::compile("src/TMB/tau2_rho_f_v2.cpp",CPPFLAGS="-Wno-ignored-attributes")
-# TMB::compile("src/TMB/tau2_rho_f_v1.cpp",CPPFLAGS="-Wno-ignored-attributes")
+
 Get_FDR<-function(ppr){
   P<-length(ppr)
   lfdr<-data.frame(index=1:P,Z=1-ppr)
