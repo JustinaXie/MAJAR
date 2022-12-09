@@ -32,9 +32,10 @@ library(devtools)
 
 Then, you can install *MAJAR* 
 ```{R}
-install_github("JustinaXie/MAJAR")
+install_github("JustinaXie/MAJAR",ref = "1209")
 ```
 
+Some files in this repository need to be downloaded before sourcing.
 ```{R}
 Rcpp::sourceCpp("src/file.cpp")
 source("R/MAJAR.R")
@@ -48,6 +49,7 @@ This is a basic example which shows you how to solve a common problem:
 
 1. An example of simulation under MAJAR's data generation process. 
 ```{r settings}
+library(MAJAR)
 M_real = 1000
 K_real = 5
 p_real =0.1

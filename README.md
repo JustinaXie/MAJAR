@@ -31,19 +31,12 @@ library(devtools)
 Then, you can install *MAJAR*
 
 ``` r
-install_github("JustinaXie/MAJAR")
-#> Downloading GitHub repo JustinaXie/MAJAR@HEAD
-#> 
-#>      checking for file ‘/private/var/folders/61/6wh2hzld1pdbp8jf8n8xzr000000gn/T/RtmpPtwIax/remotes61db2d4deb2b/JustinaXie-MAJAR-3ec4c7a/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/61/6wh2hzld1pdbp8jf8n8xzr000000gn/T/RtmpPtwIax/remotes61db2d4deb2b/JustinaXie-MAJAR-3ec4c7a/DESCRIPTION’
-#>   ─  preparing ‘MAJAR’: (345ms)
-#>   ✔  checking DESCRIPTION meta-information
-#> ─  cleaning src
-#>   ─  checking for LF line-endings in source and make files and shell scripts
-#>   ─  checking for empty or unneeded directories
-#>   ─  building ‘MAJAR_1.0.tar.gz’
-#>      
-#> 
+install_github("JustinaXie/MAJAR",ref = "1209")
+#> Skipping install of 'MAJAR' from a github remote, the SHA1 (cd33db56) has not changed since last install.
+#>   Use `force = TRUE` to force installation
 ```
+
+Some files in this repository need to be downloaded before sourcing.
 
 ``` r
 Rcpp::sourceCpp("src/file.cpp")
@@ -89,6 +82,19 @@ This is a basic example which shows you how to solve a common problem:
 1.  An example of simulation under MAJAR’s data generation process.
 
 ``` r
+library(MAJAR)
+#> Loading required package: RcppEigen
+#> 
+#> Attaching package: 'RcppEigen'
+#> The following objects are masked from 'package:RcppArmadillo':
+#> 
+#>     fastLm, fastLmPure
+#> 
+#> Attaching package: 'MAJAR'
+#> The following objects are masked _by_ '.GlobalEnv':
+#> 
+#>     deltis, generate_data_DGP, Get_FDR, Inverse.Matrix, ll_R1_j,
+#>     llbR0_j, logsumexp, MAJAR
 M_real = 1000
 K_real = 5
 p_real =0.1
@@ -140,18 +146,18 @@ hist(MAJAR_results$ppr)
 
 ``` r
 print(paste0("The estimated replicable non-zero effect proportion:",round(MAJAR_results$p,3)))
-#> [1] "The estimated replicable non-zero effect proportion:0.113"
+#> [1] "The estimated replicable non-zero effect proportion:0.09"
 print(paste0("The estimated outlier proportion:",round(MAJAR_results$lambda,3)))
-#> [1] "The estimated outlier proportion:0.126"
+#> [1] "The estimated outlier proportion:0.137"
 print(paste0("The estimated inflation rate factor:",round(MAJAR_results$alpha,3)))
-#> [1] "The estimated inflation rate factor:1.886"
+#> [1] "The estimated inflation rate factor:1.899"
 print(paste0("The estimated heritability:",round(MAJAR_results$h2,3)))
-#> [1] "The estimated heritability:0.092"
+#> [1] "The estimated heritability:0.084"
 print(paste0("The estimated correlation between main and interaction effect:",round(MAJAR_results$rho,3)))
-#> [1] "The estimated correlation between main and interaction effect:0.459"
+#> [1] "The estimated correlation between main and interaction effect:0.622"
 ```
 
 ``` r
 MAJAR_results$Time
-#> Time difference of 0.4056654 mins
+#> Time difference of 0.331185 mins
 ```
