@@ -14,25 +14,16 @@ knitr::opts_chunk$set(
 ```
 
 # MAJAR
-
+*Yuhan Xie, Song Zhai, Wei Jiang, Hongyu Zhao, Devan V. Mehrotra, Judong Shen*            
 <!-- badges: start -->
 <!-- badges: end -->
 
 We propose MAJAR (Meta-Analysis of Joint effect Associations for biomarker Replicability assessment) to jointly test prognostic and predictive effects in meta-analysis without the need of using an independent cohort for replication of the detected biomarkers. MAJAR builds upon a two-dimensional hierarchical mixture model and adopts an efficiently-implemented Expectation-Maximization (EM) algorithm for parameter estimation. It provides posterior probabilities of replicability (PPRs) and Bayesian false discovery rates (Fdr) for all biomarkers tested.
 
-## Installation
+## Source 
 
-To install the software for *MAJAR*, you need package *devtools* first
-
+Before using MAJAR, please downloaded the MAJAR software and source the scripts
 ```{R}
-if (!requireNamespace("devtools", quietly = TRUE))
-    install.packages("devtools")
-library(devtools)
-```
-
-Then, you can install *MAJAR* 
-```{R}
-#install_github("JustinaXie/MAJAR")
 Rcpp::sourceCpp("src/file.cpp")
 source("R/MAJAR.R")
 source("R/Simulation.R")
@@ -41,10 +32,6 @@ source("R/Simulation.R")
 ## Example
 
 This is a basic example which shows you how to solve a common problem:
-
-```{r example,message=FALSE,warning=FALSE}
-#library(MAJAR)
-```
 
 
 1. An example of simulation under MAJAR's data generation process. 

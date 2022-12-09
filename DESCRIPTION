@@ -8,7 +8,7 @@ Maintainer: Yuhan Xie <yuhan.xie@yale.edu>
 Description: MAJAR: Meta-Analysis of Joint effect Associations for biomarker Replicability assessment
 License: MIT + file LICENSE
 Imports: Rcpp (>= 1.0.9)
-Depends: TMB, RcppEigen,parallel
+Depends: TMB, RcppEigen,parallel,MASS
 LinkingTo: Rcpp, RcppArmadillo, TMB, RcppEigen, parallel
 NeedsCompilation: yes
 Encoding: UTF-8

@@ -3,8 +3,9 @@
 
 # MAJAR
 
-<!-- badges: start -->
-<!-- badges: end -->
+*Yuhan Xie, Song Zhai, Wei Jiang, Hongyu Zhao, Devan V. Mehrotra, Judong
+Shen*  
+<!-- badges: start --> <!-- badges: end -->
 
 We propose MAJAR (Meta-Analysis of Joint effect Associations for
 biomarker Replicability assessment) to jointly test prognostic and
@@ -16,26 +17,13 @@ parameter estimation. It provides posterior probabilities of
 replicability (PPRs) and Bayesian false discovery rates (Fdr) for all
 biomarkers tested.
 
-## Installation
+## Source
 
-To install the software for *MAJAR*, you need package *devtools* first
-
-``` r
-if (!requireNamespace("devtools", quietly = TRUE))
-    install.packages("devtools")
-library(devtools)
-#> Loading required package: usethis
-```
-
-Then, you can install *MAJAR*
+Before using MAJAR, please downloaded the MAJAR software and source the
+scripts
 
 ``` r
-#install_github("JustinaXie/MAJAR")
 Rcpp::sourceCpp("src/file.cpp")
-#> Warning in checkMatrixPackageVersion(): Package version inconsistency detected.
-#> TMB was built with Matrix version 1.4.1
-#> Current Matrix version is 1.5.1
-#> Please re-install 'TMB' from source using install.packages('TMB', type = 'source') or ask CRAN for a binary version of 'TMB' matching CRAN's 'Matrix' package
 #> Registered S3 methods overwritten by 'RcppEigen':
 #>   method               from         
 #>   predict.fastLm       RcppArmadillo
@@ -74,10 +62,6 @@ source("R/Simulation.R")
 ## Example
 
 This is a basic example which shows you how to solve a common problem:
-
-``` r
-#library(MAJAR)
-```
 
 1.  An example of simulation under MAJAR’s data generation process.
 
@@ -133,18 +117,18 @@ hist(MAJAR_results$ppr)
 
 ``` r
 print(paste0("The estimated replicable non-zero effect proportion:",round(MAJAR_results$p,3)))
-#> [1] "The estimated replicable non-zero effect proportion:0.095"
+#> [1] "The estimated replicable non-zero effect proportion:0.128"
 print(paste0("The estimated outlier proportion:",round(MAJAR_results$lambda,3)))
-#> [1] "The estimated outlier proportion:0.131"
+#> [1] "The estimated outlier proportion:0.14"
 print(paste0("The estimated inflation rate factor:",round(MAJAR_results$alpha,3)))
-#> [1] "The estimated inflation rate factor:1.836"
+#> [1] "The estimated inflation rate factor:1.692"
 print(paste0("The estimated heritability:",round(MAJAR_results$h2,3)))
-#> [1] "The estimated heritability:0.061"
+#> [1] "The estimated heritability:0.093"
 print(paste0("The estimated correlation between main and interaction effect:",round(MAJAR_results$rho,3)))
-#> [1] "The estimated correlation between main and interaction effect:0.602"
+#> [1] "The estimated correlation between main and interaction effect:0.423"
 ```
 
 ``` r
 MAJAR_results$Time
-#> Time difference of 0.3306921 mins
+#> Time difference of 0.4936011 mins
 ```
