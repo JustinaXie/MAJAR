@@ -19,8 +19,31 @@ biomarkers tested.
 
 ## Source
 
-Before using MAJAR, please downloaded the MAJAR software and source the
-scripts
+To install the software for *MAJAR*, you need package *devtools* first
+
+``` r
+if (!requireNamespace("devtools", quietly = TRUE))
+    install.packages("devtools")
+library(devtools)
+#> Loading required package: usethis
+```
+
+Then, you can install *MAJAR*
+
+``` r
+install_github("JustinaXie/MAJAR")
+#> Downloading GitHub repo JustinaXie/MAJAR@HEAD
+#> 
+#>      checking for file ‘/private/var/folders/61/6wh2hzld1pdbp8jf8n8xzr000000gn/T/RtmpPtwIax/remotes61db2d4deb2b/JustinaXie-MAJAR-3ec4c7a/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/61/6wh2hzld1pdbp8jf8n8xzr000000gn/T/RtmpPtwIax/remotes61db2d4deb2b/JustinaXie-MAJAR-3ec4c7a/DESCRIPTION’
+#>   ─  preparing ‘MAJAR’: (345ms)
+#>   ✔  checking DESCRIPTION meta-information
+#> ─  cleaning src
+#>   ─  checking for LF line-endings in source and make files and shell scripts
+#>   ─  checking for empty or unneeded directories
+#>   ─  building ‘MAJAR_1.0.tar.gz’
+#>      
+#> 
+```
 
 ``` r
 Rcpp::sourceCpp("src/file.cpp")
@@ -117,18 +140,18 @@ hist(MAJAR_results$ppr)
 
 ``` r
 print(paste0("The estimated replicable non-zero effect proportion:",round(MAJAR_results$p,3)))
-#> [1] "The estimated replicable non-zero effect proportion:0.128"
+#> [1] "The estimated replicable non-zero effect proportion:0.113"
 print(paste0("The estimated outlier proportion:",round(MAJAR_results$lambda,3)))
-#> [1] "The estimated outlier proportion:0.14"
+#> [1] "The estimated outlier proportion:0.126"
 print(paste0("The estimated inflation rate factor:",round(MAJAR_results$alpha,3)))
-#> [1] "The estimated inflation rate factor:1.692"
+#> [1] "The estimated inflation rate factor:1.886"
 print(paste0("The estimated heritability:",round(MAJAR_results$h2,3)))
-#> [1] "The estimated heritability:0.093"
+#> [1] "The estimated heritability:0.092"
 print(paste0("The estimated correlation between main and interaction effect:",round(MAJAR_results$rho,3)))
-#> [1] "The estimated correlation between main and interaction effect:0.423"
+#> [1] "The estimated correlation between main and interaction effect:0.459"
 ```
 
 ``` r
 MAJAR_results$Time
-#> Time difference of 0.4936011 mins
+#> Time difference of 0.4056654 mins
 ```

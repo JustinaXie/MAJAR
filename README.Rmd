@@ -22,7 +22,19 @@ We propose MAJAR (Meta-Analysis of Joint effect Associations for biomarker Repli
 
 ## Source 
 
-Before using MAJAR, please downloaded the MAJAR software and source the scripts
+To install the software for *MAJAR*, you need package *devtools* first
+
+```{R}
+if (!requireNamespace("devtools", quietly = TRUE))
+    install.packages("devtools")
+library(devtools)
+```
+
+Then, you can install *MAJAR* 
+```{R}
+install_github("JustinaXie/MAJAR")
+```
+
 ```{R}
 Rcpp::sourceCpp("src/file.cpp")
 source("R/MAJAR.R")
