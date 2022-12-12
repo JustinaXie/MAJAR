@@ -155,3 +155,6 @@ print(paste0("The estimated correlation between main and interaction effect:",ro
 MAJAR_results$Time
 #> Time difference of 0.4056654 mins
 ```
+
+Please cite our manuscript (doi: https://doi.org/10.1101/2022.12.08.22283210) if you would like to use our software. 
+Part of codes are adapted from MAMBA(https://www.nature.com/articles/s41467-021-21226-z). We thank the authors for sharing their codes(https://github.com/dan11mcguire/mamba).
